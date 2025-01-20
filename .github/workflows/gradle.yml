@@ -50,7 +50,7 @@ jobs:
         allowUpdates: true
         tag: ${{ github.ref_name }}
         commit: ${{ github.sha }}
-        artifacts: /*/build/libs/*.jar
+        artifacts: ${{ github.workspace }}/*/build/libs/*.jar
         generateReleaseNotes: true
         token: ${{ secrets.GITHUB_TOKEN }}
         makeLatest: true
