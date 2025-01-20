@@ -37,7 +37,11 @@ jobs:
     # See: https://github.com/gradle/actions/blob/main/dependency-submission/README.md
     - name: Generate and submit dependency graph
       uses: gradle/actions/dependency-submission@v4
-
+      with:
+        build-scan-publish: true
+        build-scan-terms-of-use-url: "https://gradle.com/help/legal-terms-of-use"
+        build-scan-terms-of-use-agree: "yes"
+        
     - name: Split branch name
       env:
         BRANCH: ${{ github.ref_name }}
@@ -50,7 +54,8 @@ jobs:
         allowUpdates: true
         tag: ${{ github.ref_name }}
         commit: ${{ github.sha }}
-        artifacts: ${{ github.workspace }}/*/build/libs/*.jar
+        artifacts: fabric/build/libs/*.jar,neoforge/build/libs/*.jar
         generateReleaseNotes: true
+        artifactErrorsFailBuild: true
         token: ${{ secrets.GITHUB_TOKEN }}
         makeLatest: true
