@@ -54,7 +54,7 @@ jobs:
         allowUpdates: true
         tag: ${{ github.ref_name }}
         commit: ${{ github.sha }}
-        artifacts: fabric/build/libs/*([0-9]).jar,neoforge/build/libs/*([0-9]).jar
+        artifacts: fabric/build/libs/*[0-9].jar,neoforge/build/libs/*[0-9].jar
         generateReleaseNotes: true
         artifactErrorsFailBuild: true
         token: ${{ secrets.GITHUB_TOKEN }}
