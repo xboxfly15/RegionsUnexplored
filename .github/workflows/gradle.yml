@@ -44,13 +44,15 @@ jobs:
       id: split
       run: echo "tag=${BRANCH%/*}" >> $GITHUB_OUTPUT
 
+    - run: ls -lR build/
+
     - uses: ncipollo/release-action@v1
       if: github.event_name != 'pull_request'
       with:
         allowUpdates: true
         tag: ${{ github.ref_name }}
         commit: ${{ github.sha }}
-        artifacts: build/libs/*.jar
+        artifacts: build/*.jar
         generateReleaseNotes: true
         token: ${{ secrets.GITHUB_TOKEN }}
         makeLatest: true
